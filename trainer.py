@@ -7,14 +7,14 @@ from dataclasses import dataclass
 from typing import Union, Optional
 
 import numpy as np
-import seqeval_loacal
+import seq_eval
 from datasets import load_dataset, Dataset, DatasetDict, load_metric
 from torch.utils.data import DataLoader
 from transformers import LayoutLMv2FeatureExtractor, LayoutXLMTokenizer, PreTrainedTokenizerBase, AutoTokenizer, \
     TrainingArguments, Trainer, LayoutLMv2ForTokenClassification
 from transformers.utils import PaddingStrategy
 
-from vi_layoutxlm import ViLayoutLMv2ForTokenClassification
+from modeling_vi_layoutxlm import ViLayoutLMv2ForTokenClassification
 
 # step1: download dataset or load local dataset
 # datasets = load_dataset("nielsr/XFUN", "xfun.fr")
@@ -94,7 +94,7 @@ label2id = {v:k for k,v in enumerate(labels)}
 
 # Metrics
 # metric = load_metric("seqeval")
-metric = load_metric("seqeval_loacal.py")
+metric = load_metric("seq_eval.py")
 return_entity_level_metrics = True
 
 def compute_metrics(p):
